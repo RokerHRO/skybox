@@ -26,7 +26,7 @@ sky_sphere
 #local Q32 = P3+D32;
 
 #local S=1;
-#while(S<Steps)
+#while(S<Steps-1)
 
 	cylinder{ Q13, Q23, R  pigment{ color rgb 1} }
 	cylinder{ Q12, Q13, R  pigment{ color rgb 1} }

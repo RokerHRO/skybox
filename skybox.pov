@@ -92,7 +92,7 @@ camera
 	up <0,1,0>
 	location <0,15,-25>
 	look_at <0,0,0>
-	angle 75
+	angle 90
 }
 
 plane { y, 0

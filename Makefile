@@ -58,7 +58,7 @@ tetra.png : skybox.pov tetrahedron.inc triangle.inc
 	rm -fv scene.inc
 	ln -v tetrahedron.inc scene.inc
 	echo '#declare CAMERA="normal"' > defs.inc
-	povray ${POV_OPT} -o$@ -iskybox.pov
+	povray ${POV_OPT} -o$@ -iskybox.pov +d +c
 
 
 sphere_spherical.png : skybox.pov sphere.inc
