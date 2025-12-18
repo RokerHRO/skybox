@@ -20,22 +20,19 @@ sky_sphere
 #local D23 = (P3-P2)/Steps;
 #local D32 = (P2-P3)/Steps;
 
-#local Q12 = P1+D12;
-#local Q13 = P1+D13;
-#local Q23 = P2+D23;
-#local Q32 = P3+D32;
+#local Q12 = P1;
+#local Q13 = P1;
+#local Q23 = P2;
+#local Q32 = P3;
 
-#local S=1;
-#while(S<Steps-1)
+#local S=0;
+#while(S<Steps)
 
+#if(S>0)
 	cylinder{ Q13, Q23, R  pigment{ color rgb 1} }
 	cylinder{ Q12, Q13, R  pigment{ color rgb 1} }
 	cylinder{ Q12, Q32, R  pigment{ color rgb 1} }
-	
-	#local Q12 = Q12 + D12;
-	#local Q13 = Q13 + D13;
-	#local Q23 = Q23 + D23;
-	#local Q32 = Q32 + D32;
+#end
 
 	#local QQ12 = Q12 + D12/5;
 	#local QQ13 = Q13 + D13/5;
@@ -57,6 +54,11 @@ sky_sphere
 	
 	#local J=J+1;
 	#end
+
+	#local Q12 = Q12 + D12;
+	#local Q13 = Q13 + D13;
+	#local Q23 = Q23 + D23;
+	#local Q32 = Q32 + D32;
 
 #local S=S+1;
 #end

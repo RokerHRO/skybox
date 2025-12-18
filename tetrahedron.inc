@@ -25,20 +25,21 @@
 
 // vertices of the tetrahedron
 
-sphere{ P1, 2 pigment { color rgb<1,0,0> } rotate ROT }
-sphere{ P2, 2 pigment { color rgb<0,1,0> } rotate ROT }
-sphere{ P3, 2 pigment { color rgb<0,0,1> } rotate ROT }
-sphere{ P4, 2 pigment { color rgb<1,1,1> } rotate ROT }
+sphere{ P1, 2 pigment { color rgb<1,0,0> } finish { phong 0.5 } rotate ROT }
+sphere{ P2, 2 pigment { color rgb<0,1,0> } finish { phong 0.5 } rotate ROT }
+sphere{ P3, 2 pigment { color rgb<0,0,1> } finish { phong 0.5 } rotate ROT }
+sphere{ P4, 2 pigment { color rgb<1,1,1> } finish { phong 0.5 } rotate ROT }
 
 
 // edges of the tetrahedron
-cylinder { P1, P2, R*2  pigment { color rgb<0,1,0> } }
-cylinder { P1, P3, R*2  pigment { color rgb<0,0,1> } }
-cylinder { P1, P4, R*2  pigment { color rgb<1,1,1> } }
+cylinder { P1, P2, R*2  pigment { color rgb<1,1,0> } }
+cylinder { P1, P3, R*2  pigment { color rgb<1,1,0> } }
+cylinder { P1, P4, R*2  pigment { color rgb<1,1,0> } }
 
-cylinder { P2, P3, R*2  pigment { color red 1 } }
-cylinder { P3, P4, R*2  pigment { color red 1 } }
-cylinder { P4, P2, R*2  pigment { color red 1 } }
+cylinder { P2, P3, R*2  pigment { color rgb<1,1,0> } }
+cylinder { P3, P4, R*2  pigment { color rgb<1,1,0> } }
+cylinder { P4, P2, R*2  pigment { color rgb<1,1,0> } }
+
 
 // faces of the tetrahedron
 #include "triangle.inc"
