@@ -74,6 +74,4 @@ sphere_%.png : skybox.pov sphere.inc
 	povray ${POV_OPT} -o$@ -iskybox.pov
 
 clean:
-	rm -vf box_*.png sphere_*.png ubox_*.png
-
-
+	rm -vf box_*.png sphere_*.png ubox_*.png tetrahedron_*.png
