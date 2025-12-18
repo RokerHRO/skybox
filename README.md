@@ -1,8 +1,19 @@
 # Skybox – use POV-Ray to generate skyboxes for Cube2/Sauerbraten game scenes
 
-## Examples
-### A grid box as skybox
-Simplest case: A square grid on each of the six faces of the skybox:
+## How to use
+
+Just type `make` and the example images below will be generated. For Cube2/Sauerbraten you only need the images with `_ft`, `_bk`, `_lf`, `_rt`, `_up` and `_dn` in their names for the "front", "back", "left", "right", "up" and "down" side of your skybox. This naming scheme is mandatory for the game engine to find the 6 images!
+
+Put the generated images in your textures directory, I've a special `textures/sky` subdirectory and refer to the desired skybox in the scene's `.cfg` file:
+
+```cpp
+// loadsky textures/sky/box
+// loadsky textures/sky/sphere
+loadsky textures/sky/ubox
+```
+
+# Examples
+## A grid box as skyboximplest case: A square grid on each of the six faces of the skybox:
 
 <img src="https://github.com/user-attachments/assets/13df3c42-5ca4-4fd4-a2f2-578742e13114" width="256" />
 <img src="https://github.com/user-attachments/assets/212028b3-fb2d-4785-8f94-64f2386a9fb7" width="256" />
