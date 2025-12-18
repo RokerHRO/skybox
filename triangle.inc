@@ -1,13 +1,5 @@
 #version 3.7;
 
-#declare R=0.07;
-#declare RR = R/3.0;
-
-#ifndef(ROT)
-//#declare ROT=<22,22,22>;
-#declare ROT=<0,0,0>;
-#end
-
 #declare T = texture
 	{
 		pigment { color rgb<0.4, 0.2, 1.0> }
@@ -20,87 +12,53 @@ sky_sphere
 }
 */
 
-// scene
-#declare I=-10;
-#while(I<10)
+// does NOT draw the triangle itself!
+#macro Triangle (P1, P2, P3, Steps)
 
-// +Z
-cylinder { <-10,  +I, +10>, <+10,  +I, +10>, R pigment { color rgb 1 } rotate ROT }
-cylinder { < +I, -10, +10>, < +I, +10, +10>, R pigment { color rgb 1 } rotate ROT }
+#local D12 = (P2-P1)/Steps;
+#local D13 = (P3-P1)/Steps;
+#local D23 = (P3-P2)/Steps;
+#local D32 = (P2-P3)/Steps;
 
-// -Z
-cylinder { < -I, -10, -10>, < -I, +10, -10>, R pigment { color rgb 1 } rotate ROT }
-cylinder { <-10,  -I, -10>, <+10,  -I, -10>, R pigment { color rgb 1 } rotate ROT }
+#local Q12 = P1+D12;
+#local Q13 = P1+D13;
+#local Q23 = P2+D23;
+#local Q32 = P3+D32;
 
-// +Y
-cylinder { < +I, +10, -10>, < +I, +10, +10>, R pigment { color rgb 1 } rotate ROT }
-cylinder { <-10, +10,  -I>, <+10, +10,  -I>, R pigment { color rgb 1 } rotate ROT }
+#local S=1;
+#while(S<Steps)
 
-// -Y
-cylinder { < -I, -10, -10>, < -I, -10, +10>, R pigment { color rgb 1 } rotate ROT }
-cylinder { <-10, -10,  +I>, <+10, -10,  +I>, R pigment { color rgb 1 } rotate ROT }
+	cylinder{ Q13, Q23, R  pigment{ color rgb 1} }
+	cylinder{ Q12, Q13, R  pigment{ color rgb 1} }
+	cylinder{ Q12, Q32, R  pigment{ color rgb 1} }
+	
+	#local Q12 = Q12 + D12;
+	#local Q13 = Q13 + D13;
+	#local Q23 = Q23 + D23;
+	#local Q32 = Q32 + D32;
 
+	#local QQ12 = Q12 + D12/5;
+	#local QQ13 = Q13 + D13/5;
+	#local QQ23 = Q23 + D23/5;
+	#local QQ32 = Q32 + D32/5;
+	
+	#local J=1;
+	#while(J<5)
 
-// +X
-cylinder { <+10,  -I, -10>, <+10,  -I, +10>, R pigment { color rgb 1 } rotate ROT }
-cylinder { <+10, -10,  -I>, <+10, +10,  -I>, R pigment { color rgb 1 } rotate ROT }
+		cylinder{ QQ13, QQ23, RR  texture{T} }
+		cylinder{ QQ12, QQ13, RR  texture{T} }
+		cylinder{ QQ12, QQ32, RR  texture{T} }
 
-// -X
-cylinder { <-10,  +I, -10>, <-10,  +I, +10>, R pigment { color rgb 1 } rotate ROT }
-cylinder { <-10, -10,  +I>, <-10, +10,  +I>, R pigment { color rgb 1 } rotate ROT }
+		#local QQ12 = QQ12 + D12/5;
+		#local QQ13 = QQ13 + D13/5;
+		#local QQ23 = QQ23 + D23/5;
+		#local QQ32 = QQ32 + D32/5;
 
-#declare J=0;
-#while(J<2)
+	
+	#local J=J+1;
+	#end
 
-// +Z
-cylinder { <-10,  +I+J, +10>, <+10,  +I+J, +10>, RR texture{T} rotate ROT }
-cylinder { < +I+J, -10, +10>, < +I+J, +10, +10>, RR texture{T} rotate ROT }
-
-// -Z
-cylinder { < -I-J, -10, -10>, < -I-J, +10, -10>, RR texture{T} rotate ROT }
-cylinder { <-10,  -I-J, -10>, <+10,  -I-J, -10>, RR texture{T} rotate ROT }
-
-// +Y
-cylinder { < +I+J, +10, -10>, < +I+J, +10, +10>, RR texture{T} rotate ROT }
-cylinder { <-10, +10,  -I-J>, <+10, +10,  -I-J>, RR texture{T} rotate ROT }
-
-// -Y
-cylinder { < -I-J, -10, -10>, < -I-J, -10, +10>, RR texture{T} rotate ROT }
-cylinder { <-10, -10,  +I+J>, <+10, -10,  +I+J>, RR texture{T} rotate ROT }
-
-
-// +X
-cylinder { <+10,  -I-J, -10>, <+10,  -I-J, +10>, RR texture{T} rotate ROT }
-cylinder { <+10, -10,  -I-J>, <+10, +10,  -I-J>, RR texture{T} rotate ROT }
-
-// -X
-cylinder { <-10,  +I+J, -10>, <-10,  +I+J, +10>, RR texture{T} rotate ROT }
-cylinder { <-10, -10,  +I+J>, <-10, +10,  +I+J>, RR texture{T} rotate ROT }
-
-
-#declare J=J+0.4;
+#local S=S+1;
 #end
 
-#declare I=I+2;
 #end
-
-sphere{ <-10,-10,-10>, 2 pigment { color rgb 0.15   } rotate ROT }
-sphere{ <+10,-10,-10>, 2 pigment { color rgb<1,0,0> } rotate ROT }
-sphere{ <-10,+10,-10>, 2 pigment { color rgb<0,1,0> } rotate ROT }
-sphere{ <+10,+10,-10>, 2 pigment { color rgb<1,1,0> } rotate ROT }
-
-sphere{ <-10,-10,+10>, 2 pigment { color rgb<0,0,1> } rotate ROT }
-sphere{ <+10,-10,+10>, 2 pigment { color rgb<1,0,1> } rotate ROT }
-sphere{ <-10,+10,+10>, 2 pigment { color rgb<0,1,1> } rotate ROT }
-sphere{ <+10,+10,+10>, 2 pigment { color rgb<1,1,1> } rotate ROT }
-
-torus { 20, 2.5
-	pigment { color rgb<1.0, 0.6, 0.2> }
-	finish { phong 0.5 }
-	rotate z*30
-}
-
-light_source
-{
-	<-6, +6, -6> color 1
-}

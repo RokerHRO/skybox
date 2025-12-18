@@ -85,3 +85,18 @@ camera
 }
 #end
 
+#if(CAMERA="normal") // +z but with greater distance
+camera
+{
+	right <-1,0,0>
+	up <0,1,0>
+	location <0,15,-25>
+	look_at <0,0,0>
+	angle 75
+}
+
+plane { y, 0
+	pigment { checker color rgbt<0.8, 0.8, 0.8, 0.8> color rgbt<0.9, 0.3, 0.3, 0.8> scale 2}
+}
+
+#end

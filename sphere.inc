@@ -28,7 +28,7 @@ sky_sphere
 #while(I<180)
 
 torus { 10, R pigment { color rgb 1 }
-	
+	sturm
 	rotate z*90
 	rotate y*I
 }
@@ -37,7 +37,7 @@ torus { 10, R pigment { color rgb 1 }
 #declare C=cos( radians(I-90) ) * 10;
 #declare S=sin( radians(I-90) ) * 10;
 
-torus { C, R  pigment { color rgb 1 }
+torus { C, R sturm pigment { color rgb 1 }
 	translate<0, S, 0>
 }
 
@@ -48,7 +48,7 @@ torus { C, R  pigment { color rgb 1 }
 
 intersection {
 	torus { 10, RR texture {T}
-		
+		sturm
 		rotate z*90
 		rotate y*(I+J)
 	}
