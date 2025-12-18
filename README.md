@@ -27,7 +27,7 @@ As a "spherical mapping" (plate carrée projection) this map looks like this:
 
 
 ### A rotated box as skybox
-If the box is rotated that it stands on one of its corners, the six skybox faces look like these:
+If the box is rotated that it stands on one of its corners: The white sphere is in the zenith above your head, the dark sphere in the nadir below your feet. The six skybox faces look like these:
 
 <img src="https://github.com/user-attachments/assets/50d3dd0c-b037-415f-b223-912396e88909" width="256" />
 <img src="https://github.com/user-attachments/assets/b6963733-d952-41d8-acdb-57e4182e63db" width="256" />
