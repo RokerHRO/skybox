@@ -1,0 +1,15 @@
+# generated images:
+
+*_??.png
+*_spherical.png
+
+
+# generated / linked by Makefile:
+
+camera.inc
+scene.inc
+defs.inc
+
+# temporary files:
+
+*~
