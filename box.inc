@@ -84,15 +84,15 @@ cylinder { <-10, -10,  +I+J>, <-10, +10,  +I+J>, RR texture{T} rotate ROT }
 #declare I=I+2;
 #end
 
-sphere{ <-10,-10,-10>, 2 pigment { color rgb 0.15   } rotate ROT }
-sphere{ <+10,-10,-10>, 2 pigment { color rgb<1,0,0> } rotate ROT }
-sphere{ <-10,+10,-10>, 2 pigment { color rgb<0,1,0> } rotate ROT }
-sphere{ <+10,+10,-10>, 2 pigment { color rgb<1,1,0> } rotate ROT }
+sphere{ <-10,-10,-10>, 2 pigment { color rgb 0.066  } finish{ phong 0.5} rotate ROT }
+sphere{ <+10,-10,-10>, 2 pigment { color rgb<1,0,0> } finish{ phong 0.5} rotate ROT }
+sphere{ <-10,+10,-10>, 2 pigment { color rgb<0,1,0> } finish{ phong 0.5} rotate ROT }
+sphere{ <+10,+10,-10>, 2 pigment { color rgb<1,1,0> } finish{ phong 0.5} rotate ROT }
 
-sphere{ <-10,-10,+10>, 2 pigment { color rgb<0,0,1> } rotate ROT }
-sphere{ <+10,-10,+10>, 2 pigment { color rgb<1,0,1> } rotate ROT }
-sphere{ <-10,+10,+10>, 2 pigment { color rgb<0,1,1> } rotate ROT }
-sphere{ <+10,+10,+10>, 2 pigment { color rgb<1,1,1> } rotate ROT }
+sphere{ <-10,-10,+10>, 2 pigment { color rgb<0,0,1> } finish{ phong 0.5} rotate ROT }
+sphere{ <+10,-10,+10>, 2 pigment { color rgb<1,0,1> } finish{ phong 0.5} rotate ROT }
+sphere{ <-10,+10,+10>, 2 pigment { color rgb<0,1,1> } finish{ phong 0.5} rotate ROT }
+sphere{ <+10,+10,+10>, 2 pigment { color rgb<1,1,1> } finish{ phong 0.5} rotate ROT }
 
 torus { 20, 2.5
 	pigment { color rgb<1.0, 0.6, 0.2> }
