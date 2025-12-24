@@ -9,6 +9,7 @@
 camera.inc
 scene.inc
 defs.inc
+.depends
 
 # temporary files:
 
