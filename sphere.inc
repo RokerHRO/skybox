@@ -31,6 +31,7 @@ torus { 10, R pigment { color rgb 1 }
 	sturm
 	rotate z*90
 	rotate y*I
+	rotate ROT
 }
 
 #if(I>0)
@@ -39,6 +40,7 @@ torus { 10, R pigment { color rgb 1 }
 
 torus { C, R sturm pigment { color rgb 1 }
 	translate<0, S, 0>
+	rotate ROT
 }
 
 #end
@@ -54,6 +56,7 @@ intersection {
 	}
 	plane{ +y, Y70 }
 	plane{ -y, Y70 }
+	rotate ROT
 }
 
 
@@ -63,6 +66,7 @@ intersection {
 
 torus { C, RR  texture{T}
 	translate<0, S, 0>
+	rotate ROT
 }
 
 #end

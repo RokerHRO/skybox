@@ -1,34 +1,28 @@
 #version 3.7;
 
-/*
-#declare P1=<-1, -1/sqrt(3), -1/sqrt(6)> * 10;
-#declare P2=<+1, -1/sqrt(3), -1/sqrt(6)> * 10;
-#declare P3=< 0,  2/sqrt(3), -1/sqrt(6)> * 10;
-#declare P4=< 0,  0        , +3/sqrt(6)> * 10;
-*/
-
-#declare P1=<-1, -1/sqrt(6), -1/sqrt(3)> * 20;
-#declare P2=<+1, -1/sqrt(6), -1/sqrt(3)> * 20;
-#declare P3=< 0, -1/sqrt(6),  2/sqrt(3)> * 20;
-#declare P4=< 0, +3/sqrt(6),  0        > * 20;
-
-
-
-#declare R=0.07;
-#declare RR = R/3.0;
 
 #ifndef(ROT)
 //#declare ROT=<22,22,22>;
 #declare ROT=<0,0,0>;
 #end
 
+#declare P1=vrotate(<-1, -1/sqrt(6), -1/sqrt(3)> * 20, ROT);
+#declare P2=vrotate(<+1, -1/sqrt(6), -1/sqrt(3)> * 20, ROT);
+#declare P3=vrotate(< 0, -1/sqrt(6),  2/sqrt(3)> * 20, ROT);
+#declare P4=vrotate(< 0, +3/sqrt(6),  0        > * 20, ROT);
+
+
+#declare R=0.07;
+#declare RR = R/3.0;
+
+
 
 // vertices of the tetrahedron
 
-sphere{ P1, 2 pigment { color rgb<1,0,0> } finish { phong 0.5 } rotate ROT }
-sphere{ P2, 2 pigment { color rgb<0,1,0> } finish { phong 0.5 } rotate ROT }
-sphere{ P3, 2 pigment { color rgb<0,0,1> } finish { phong 0.5 } rotate ROT }
-sphere{ P4, 2 pigment { color rgb<1,1,1> } finish { phong 0.5 } rotate ROT }
+sphere{ P1, 2 pigment { color rgb<1,0,0> } finish { phong 0.5 } }
+sphere{ P2, 2 pigment { color rgb<0,1,0> } finish { phong 0.5 } }
+sphere{ P3, 2 pigment { color rgb<0,0,1> } finish { phong 0.5 } }
+sphere{ P4, 2 pigment { color rgb<1,1,1> } finish { phong 0.5 } }
 
 
 // edges of the tetrahedron
@@ -59,4 +53,5 @@ torus { 25, 2.5
 light_source
 {
 	<-6, +6, -6> color 1
+	rotate ROT
 }

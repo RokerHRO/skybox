@@ -1,4 +1,4 @@
-SCENE:=box cloud sphere tetrahedron
+SCENE:=box cloud sphere tetrahedron octa
 
 PROJ:=up dn lf rt ft bk spherical
 
@@ -43,6 +43,8 @@ POV_OPT=+d +v -p +a0.1 +am2 +r3
 	echo == Width= $$WIDTH == Height= $(HEIGHT) ==
 	
 	echo '#declare CAMERA="'$$CAMERA'"' > defs.inc
+	echo '#declare ROT=<22,22,22>;' >> defs.inc
+	
 	povray ${POV_OPT} -h${HEIGHT} -w$$WIDTH -o$@ -iskybox.pov
 
 
