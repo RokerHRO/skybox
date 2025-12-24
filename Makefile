@@ -1,4 +1,4 @@
-SCENE:=box cloud sphere tetrahedron octa
+SCENE:=box cloud sphere tetrahedron octa icosa
 
 PROJ:=up dn lf rt ft bk spherical
 
