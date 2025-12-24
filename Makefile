@@ -15,11 +15,14 @@ all: .depends ${PNGS}
 
 .ONESHELL:
 
+# Y dimension of the generated images:
+HEIGHT=512
+
 # High quality mode:
-POV_OPT=+d +v -p +a0.1 +am2 +r3 -w1024 -h1024
+POV_OPT=+d +v -p +a0.1 +am2 +r3
 
 # Fast mode:
-#POV_OPT=+d +v -p -a  -w512 -h512
+#POV_OPT=+d +v -p -a
 
 .depends: makedepends.sh skybox.pov ${INCS}
 	./makedepends.sh ${PNGS}
@@ -35,13 +38,12 @@ POV_OPT=+d +v -p +a0.1 +am2 +r3 -w1024 -h1024
 	
 	rm -fv scene.inc
 	ln -v $$SC.inc scene.inc
-
-	WIDTH=` if [ $$CAMERA = "spherical" ] ; then echo 2048 ; else echo 1024; fi`
-#	WIDTH=` if [ $$CAMERA = "spherical" ] ; then echo 1024 ; else echo 512; fi`
-	echo == Width= $$WIDTH ==
+	
+	WIDTH=` if [ $$CAMERA = "spherical" ] ; then echo  ${HEIGHT} \* 2 | bc ; else echo ${HEIGHT}; fi`
+	echo == Width= $$WIDTH == Height= $(HEIGHT) ==
 	
 	echo '#declare CAMERA="'$$CAMERA'"' > defs.inc
-	povray ${POV_OPT} -w$$WIDTH -o$@ -iskybox.pov
+	povray ${POV_OPT} -h${HEIGHT} -w$$WIDTH -o$@ -iskybox.pov
 
 
 tetra.png : skybox.pov tetrahedron.inc triangle.inc
