@@ -77,10 +77,10 @@ camera
 camera
 {
 	spherical
-	right <-1,0,0>
+	right <+1,0,0>
 	up <0,1,0>
 	location <0,0,0>
-	look_at <0,0,-1>
+	look_at <0,0,+1>
 	angle 360
 }
 #end
