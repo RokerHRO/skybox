@@ -1,4 +1,4 @@
-SCENE:=box cloud sphere tetrahedron octa icosa cave
+SCENE:=box cloud sphere tetrahedron octa icosa cave stars
 
 PROJ:=up dn lf rt ft bk spherical
 
@@ -16,7 +16,7 @@ all: .depends ${PNGS}
 .ONESHELL:
 
 # Y dimension of the generated images:
-HEIGHT=512
+HEIGHT=1024
 
 # High quality mode:
 POV_OPT=+d +v -p +a0.1 +am2 +r3
